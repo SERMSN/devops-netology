@@ -64,13 +64,68 @@ touch terraform/.gitignore
 2. Файл `terraform/.gitignore` заполнен содержимым
 
 3. В `README.md` добавлено описание:
-```markdown
-Благодаря файлу .gitignore в каталоге terraform будут проигнорированы:
-- Файлы с состояниями Terraform (*.tfstate)
-- Файлы с логами крешей (crash.log)
-- Файлы с переменными (*.tfvars)
-- Скрытые файлы конфигурации провайдера (.terraformrc)
+
+## Файлы, игнорируемые в `.gitignore` для Terraform
+
+Будут игнорироваться следующие типы файлов:
+
+### 1. **Локальные директории Terraform**
 ```
+.terraform/
+```
+Игнорируется вся директория `.terraform/` и все её содержимое в любом месте репозитория.
+
+### 2. **Файлы состояний Terraform**
+```
+*.tfstate
+*.tfstate.*
+```
+Игнорируются:
+- Все файлы с расширением `.tfstate` (например: `terraform.tfstate`)
+- Все файлы, начинающиеся с любого имени и содержащие `.tfstate.` в любой части имени (например: `terraform.tfstate.backup`)
+
+### 3. **Файлы логов аварийных завершений**
+```
+crash.log
+crash.*.log
+```
+Игнорируются:
+- Файл с точным именем `crash.log`
+- Файлы, начинающиеся с `crash.`, затем содержащие любой текст, и заканчивающиеся на `.log` (например: `crash.12345.log`)
+
+### 4. **Файлы переменных Terraform**
+```
+*.tfvars
+*.tfvars.json
+```
+Игнорируются:
+- Все файлы с расширением `.tfvars` (например: `terraform.tfvars`)
+- Все файлы с расширением `.tfvars.json` (например: `variables.tfvars.json`)
+
+### 5. **Файлы переопределений**
+```
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+```
+Игнорируются:
+- Файлы с точными именами `override.tf` и `override.tf.json`
+- Файлы, заканчивающиеся на `_override.tf` (например: `my_override.tf`)
+- Файлы, заканчивающиеся на `_override.tf.json` (например: `custom_override.tf.json`)
+
+### 6. **Файлы блокировок состояний**
+```
+.terraform.tfstate.lock.info
+```
+Игнорируется файл с точным именем `.terraform.tfstate.lock.info`
+
+### 7. **Файлы конфигурации CLI**
+```
+.terraformrc
+terraform.rc
+```
+Игнорируются файлы с точными именами `.terraformrc` и `terraform.rc`
 
 4. Выполнен коммит:
 ```bash
