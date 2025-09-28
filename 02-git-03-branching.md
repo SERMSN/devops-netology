@@ -254,6 +254,9 @@ git push origin main
 
 ![Финальный Network Graph](images/finish_git-merge_and_git-rebase_to_main.png)
 
+### Ссылка на репозиторий:
+- **GitHub:** https://github.com/SERMSN/devops-netology
+
 ## Выводы
 
 В ходе выполнения задания:
